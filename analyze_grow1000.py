@@ -3,6 +3,7 @@ from rdkit.Chem import AllChem
 import numpy as np
 #import pickle
 import operator
+import collections
 
 def read_file(file_name):
   smiles_list = []
@@ -13,7 +14,6 @@ def read_file(file_name):
   return smiles_list
 
 def get_probs(smarts_list,smiles_list,ring=False):
-  import collections
   bonds = []
   probs = collections.OrderedDict()
 
@@ -41,6 +41,26 @@ def get_probs(smarts_list,smiles_list,ring=False):
       tot += probs[key]
       probs2[key] = probs[key]
             
+  return tot, probs2
+
+def clean_probs(probs):
+  exceptions = ['[#7]#','[#8]=','[#9]','[#17]','[#35]','[#53]']
+  probs2 = collections.OrderedDict()
+  for key in probs:
+    skip = False
+    for exception in exceptions:
+      if exception in key:
+        #tokens = re.split('\[|\]|;',key)
+        #alt_key = '['+tokens[3]+']'+tokens[2]+'['+tokens[1]+';!R]'
+        #print key,probs[key],alt_key,probs[alt_key]
+        skip = True
+    if not skip:
+      probs2[key] = probs[key]
+  
+  tot = 0
+  for key in probs2:
+      tot += probs2[key]
+      
   return tot, probs2
 
 def get_p(probs):
@@ -224,6 +244,7 @@ for bond in bonds:
 
 #print (len(smarts))
 tot,probs = get_probs(smarts,smiles_list)
+tot,probs = clean_probs(probs)
 #print (tot, probs)
 p = get_p(probs)
 #print (p)

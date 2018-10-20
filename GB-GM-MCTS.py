@@ -326,9 +326,9 @@ rxn_smarts_ring_list = pickle.load(open('rs_ring.p','rb'))
 rxn_smarts_list = pickle.load(open('r_s1.p','rb'))
 p = pickle.load(open('p1.p','rb'))
 
-prob_double = 0.8
-p_ring = scale_p_ring(rxn_smarts_ring_list,p_ring,prob_double)
-p_make_ring = p_ring
+#prob_double = 0.8
+#p_ring = scale_p_ring(rxn_smarts_ring_list,p_ring,prob_double)
+#p_make_ring = p_ring
 
 num_sims = 40 # 40 = 1000 logP evaluations
 
