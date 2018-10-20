@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 import operator
 import collections
+import re
 
 def read_file(file_name):
   smiles_list = []
@@ -50,9 +51,14 @@ def clean_probs(probs):
     skip = False
     for exception in exceptions:
       if exception in key:
-        #tokens = re.split('\[|\]|;',key)
-        #alt_key = '['+tokens[3]+']'+tokens[2]+'['+tokens[1]+';!R]'
-        #print key,probs[key],alt_key,probs[alt_key]
+        tokens = re.split('\[|\]|;',key)
+        alt_key = '['+tokens[3]+']'+tokens[2]+'['+tokens[1]+';!R]'
+        probs[alt_key] += probs[key]
+        
+  for key in probs:
+    skip = False
+    for exception in exceptions:
+      if exception in key:
         skip = True
     if not skip:
       probs2[key] = probs[key]
@@ -63,7 +69,6 @@ def clean_probs(probs):
       
   return tot, probs2
 
-        
   return probs
 
 def get_p(probs):
@@ -268,8 +273,8 @@ for i in range(len(sorted_x)):
   print (sorted_x[i][0],sorted_x[i][1]/tot)
 
 rxn_smarts = get_rxn_smarts(probs)
-print (rxn_smarts)
-print (p)
+#print (rxn_smarts)
+#print (p)
 
 pickle.dump(p,open('p1.p','wb')) 
 pickle.dump(rxn_smarts,open('r_s1.p','wb')) 
