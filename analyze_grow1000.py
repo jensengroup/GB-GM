@@ -48,12 +48,12 @@ def clean_probs(probs):
   exceptions = ['[#7]#','[#8]=','[#9]','[#17]','[#35]','[#53]']
   probs2 = collections.OrderedDict()
   for key in probs:
-    skip = False
-    for exception in exceptions:
-      if exception in key:
-        tokens = re.split('\[|\]|;',key)
-        alt_key = '['+tokens[3]+']'+tokens[2]+'['+tokens[1]+';!R]'
-        probs[alt_key] += probs[key]
+    # skip = False
+    # for exception in exceptions:
+    #   if exception in key:
+    #     tokens = re.split('\[|\]|;',key)
+    #     alt_key = '['+tokens[3]+']'+tokens[2]+'['+tokens[1]+';!R]'
+    #     probs[alt_key] += probs[key]
         
   for key in probs:
     skip = False
@@ -184,6 +184,15 @@ print('Probability of non-ring atoms',float(probs['[!R]'])/probs['[*]'])
 print('Probability of fused-ring atoms',float(probs['[R2]'])/probs['[*]'])
 print('')
 
+smarts = ['[R]~[R]~[R]','[R]-[R]-[R]','[R]=[R]-[R]']
+
+tot,probs = get_probs(smarts,smiles_list,ring=True)
+
+#print(tot,probs)
+
+print('Probability of [R]-[R]-[R]',float(probs['[R]-[R]-[R]'])/probs['[R]~[R]~[R]'])
+print('Probability of [R]=[R]-[R]',float(probs['[R]=[R]-[R]'])/probs['[R]~[R]~[R]'])
+print('')
 
 smarts = []
 for element in elements:
@@ -228,6 +237,7 @@ count = 0
 for i in range(len(sorted_x)):
   print (sorted_x[i][0],sorted_x[i][1]/tot)
 
+print('')
 #print (count)
 
 rxn_smarts_rings = get_rxn_smarts_rings(probs)
@@ -256,6 +266,11 @@ tot,probs = clean_probs(probs)
 #print (tot, probs)
 p = get_p(probs)
 #print (p)
+
+sorted_x = sorted(probs.items(), key=operator.itemgetter(1), reverse=True)
+count = 0
+for i in range(len(sorted_x)):
+  print (sorted_x[i][0],sorted_x[i][1]/tot)
 
 rxn_smarts = get_rxn_smarts(probs)
 #print (rxn_smarts)
