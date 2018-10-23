@@ -47,14 +47,14 @@ def get_probs(smarts_list,smiles_list,ring=False):
 def clean_probs(probs):
   exceptions = ['[#7]#','[#8]=','[#9]','[#17]','[#35]','[#53]']
   probs2 = collections.OrderedDict()
-  for key in probs:
+  # for key in probs:
     # skip = False
     # for exception in exceptions:
     #   if exception in key:
     #     tokens = re.split('\[|\]|;',key)
     #     alt_key = '['+tokens[3]+']'+tokens[2]+'['+tokens[1]+';!R]'
     #     probs[alt_key] += probs[key]
-        
+
   for key in probs:
     skip = False
     for exception in exceptions:
