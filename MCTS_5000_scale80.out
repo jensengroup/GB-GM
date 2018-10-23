@@ -1,0 +1,19 @@
+1.2983391129768211 0.1999999999999999 1.0
+num_sims 200
+average_size, size_stdev 39.15 3.5
+max_children = 25
+
+0 3.63995836650404 CNCc1cc(N(C)c2ccc(-c3ccc(O)cc3C)c(C)c2CBr)c(OC)c(C)c1C1=CCCC1 36
+1 4.70453638013243 Cc1cccc(-c2c(C)c(C3=CC=NC3)c(Br)c(-c3ccccc3C)c2Oc2cc(F)cc(OCF)c2)c1 38
+2 3.766401709660377 COc1c(CCl)c(C)c(Br)c(N(S)c2cccc(C)c2-c2ccc(C)c(O)c2)c1C1=CCC(N)=CN1C1=CCCC1 41
+3 4.840737498030856 CNc1ccc(C)cc1-c1c(C)nc(-c2c(C=O)cc(-c3ccccc3)c(C)c2C)c(Cl)c1C1=CCCC1 38
+4 4.809833811757797 Cc1ccccc1-c1cc(C)c(C(O)(F)Cl)c(Br)c1-c1c(C)cc(C2=CCC=C2)cc1-c1ccccc1 37
+5 4.932406825085084 CC1=C(C)C(=O)C(Cl)=C(c2c(C)c(Cl)c(-c3c(N=O)cc(-c4ccccc4)cc3C3(F)C=CCC3)c(Cl)c2Br)C1 40
+6 5.201084149932346 CCc1nc(N2C=CCC2)ccc1-c1c(C)cc(CF)c(-c2cccc(C(C)C)c2)c1-c1c(C)ccc(C)c1C 40
+7 4.215604341272333 Cc1cc(Cl)c(-c2c(Br)c(-c3c(C)cc(C)c(C)c3C)cc(F)c2OC2=CC=CC2)cn1 32
+8 3.8127623610255355 Cc1ccc(-c2ccc(N(C)c3c(N(C)C4=CCCC4)cc(-c4ccccc4)c(O)c3C)c(C)c2N)cc1O 39
+9 3.315862130574958 CC1=CC(C)(C(=O)c2cc(C)c(N(C)C3=CCCC3)c(C)c2N)OC(c2c(C)cccc2-c2ccccc2)=C1C 40
+
+time, count  4004.772664785385 5000
+5.201084149932346 4.323918757397576 0.6209331519448121
+41 38.1 2.5079872407968904

@@ -1,0 +1,20 @@
+1.2983391129768211 0.1999999999999999 1.0
+num_sims 40
+average_size, size_stdev 39.15 3.5
+max_children = 25
+
+0 2.814225858429146 Cc1cccc(-c2c(N(C)C)nc(-c3c(C)c(F)c(N(C)C)c([SH]=O)c3C)c(C3=NCCC3)c2-c2ccccc2C)c1 42
+1 2.7020176116050756 CC(=O)N(C1=C(C)C(C)=C(O)C2(C)C(Cl)=C(C)N=C(c3cccc(F)c3)C12C1CC=CC1)c1ccc(CN(C)C)c(C)c1 43
+2 3.437053026800137 CNc1cccc(OC2(Br)C=CC(c3c(-c4ccccc4)ccc(C(=O)Cl)c3Cl)=C[SH]2C2=CCCC2)c1 37
+3 2.7129559322319468 CCc1c(C(=O)Cl)ccc(-c2c(C)c(F)c(-c3ccncc3C)c(C)c2-c2ccc(C3(C)C=CCN3)cc2)c1CN 41
+4 3.2568136091994813 CCOc1cc(-c2cc(C)c(C)cc2NC)c(-c2ccc(C)c(C)c2C2=CCC=C2)cc1N1C=CC(O)C=C1C 40
+5 4.460264580528377 CCc1cc(N(C)C)cc(Cl)c1-c1c(C)c(S)c(N2C=CCC2)c(-c2cccc(C)c2)c1-c1ccccc1N 39
+6 3.364674917665416 COC(=O)c1cc(Oc2[nH]c(-c3cc(F)c(C)c(F)c3)nc2N)ccc1-c1cccc(C2=CCCC2)c1 37
+7 3.16504973209725 CCC(F)c1cc(C)c(-c2c(C)c(Cl)cc(-c3ccc(N(C)C)cc3N(C)C)c2N2CC=CC2)cc1CC(C)(C)O 41
+8 3.3738852223856206 Cc1cc(-c2[nH]ccc2N)c(Cl)c(-c2c(-c3ccc(C)c(F)c3C)c(Br)cc(S)c2N2C=CCC2)n1 36
+9 4.532299841510873 CCC1(c2c(-c3c(C)cc(S)cc3C)c(C)c(-c3c(C)cc(C)cc3O)c(Br)c2-c2cc(C)c(C)c(S)c2)C=COC1 42
+
+time, count  959.6292610168457 1000
+4.532299841510873 3.381924033245332 0.6151701843644676
+43 39.8 2.315167380558045
+[Finished in 960.4s]
