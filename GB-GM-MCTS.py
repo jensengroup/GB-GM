@@ -1,3 +1,7 @@
+'''
+code adapted from https://github.com/haroldsultan/MCTS/blob/master/mcts.py by Jan H. Jensen 2018
+
+'''
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import Descriptors
