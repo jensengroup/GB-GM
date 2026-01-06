@@ -19,8 +19,8 @@ from __future__ import print_function
 
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
-from rdkit.six.moves import cPickle
-from rdkit.six import iteritems
+from rdkit.Chem import rdFingerprintGenerator
+import pickle
 
 import math
 from collections import defaultdict
@@ -28,6 +28,7 @@ from collections import defaultdict
 import os.path as op
 
 _fscores = None
+_mfpgen = rdFingerprintGenerator.GetMorganGenerator(radius=2)
 
 
 def readFragmentScores(name='fpscores'):
@@ -36,7 +37,7 @@ def readFragmentScores(name='fpscores'):
   # generate the full path filename:
   if name == "fpscores":
     name = op.join(op.dirname(__file__), name)
-  _fscores = cPickle.load(gzip.open('%s.pkl.gz' % name))
+  _fscores = pickle.load(gzip.open('%s.pkl.gz' % name))
   outDict = {}
   for i in _fscores:
     for j in range(1, len(i)):
@@ -55,15 +56,13 @@ def calculateScore(m):
     readFragmentScores()
 
   # fragment score
-  fp = rdMolDescriptors.GetMorganFingerprint(m,
-                                             2)  #<- 2 is the *radius* of the circular fingerprint
-  fps = fp.GetNonzeroElements()
+  fp = _mfpgen.GetSparseCountFingerprint(m)
+  nze = fp.GetNonzeroElements()
   score1 = 0.
   nf = 0
-  for bitId, v in iteritems(fps):
-    nf += v
-    sfp = bitId
-    score1 += _fscores.get(sfp, -4) * v
+  for bitId, count in nze.items():
+    nf += count
+    score1 += _fscores.get(bitId, -4) * count
   score1 /= nf
 
   # features score
@@ -94,8 +93,8 @@ def calculateScore(m):
   # not in the original publication, added in version 1.1
   # to make highly symmetrical molecules easier to synthetise
   score3 = 0.
-  if nAtoms > len(fps):
-    score3 = math.log(float(nAtoms) / len(fps)) * .5
+  if nAtoms > len(nze):
+    score3 = math.log(float(nAtoms) / len(nze)) * .5
 
   sascore = score1 + score2 + score3
 
